@@ -1,0 +1,39 @@
+name: Deploy FibApp
+on:
+  push:
+    branches:
+      - master # check your repo, your default branch might be master!
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+      - run: docker build -t giorgiosavron/react-test -f ./client/Dockerfile.dev ./client
+      - run: docker run -e CI=true giorgiosavron/react-test npm test
+
+      - run: docker build -t giorgiosavron/fibapp-client ./client
+      - run: docker build -t giorgiosavron/fibapp-nginx ./nginx
+      - run: docker build -t giorgiosavron/fibapp-server ./server
+      - run: docker build -t giorgiosavron/fibapp-worker ./worker
+
+      - run: docker push giorgiosavron/fibapp-client
+      - run: docker push giorgiosavron/fibapp-nginx
+      - run: docker push giorgiosavron/fibapp-server
+      - run: docker push giorgiosavron/fibapp-worker
+
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v18
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+          application_name: ....h
+          environment_name: ....env
+          existing_bucket_name: .....stalk-us-east-1-923445559289
+          region: ....t-1
+          version_label: ${{ github.sha }}
+          deployment_package: deploy.zip

@@ -1,0 +1,9 @@
+version: "3"
+services:
+  fib-app:
+    build:
+      #  reference to where all files are
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5000:5000"

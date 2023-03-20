@@ -1,0 +1,21 @@
+version: "3"
+services:
+  fib-app:
+    build:
+      #  reference to where all files are
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      # map current working directory in computer to image - updates will be reflected
+      - .:/app
+  fib-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
