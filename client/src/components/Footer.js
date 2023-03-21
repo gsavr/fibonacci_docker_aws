@@ -16,8 +16,8 @@ export const Footer = () => {
           <div className="mt-14">
             <div className="flex  space-x-3 md:-mt-10">
               <div>
-                Built with React.js / Node.js & Express / Docker by Giorgio
-                Savron
+                Built with React.js / Node.js & Express / Docker / Postgres &
+                Redis DB, by Giorgio Savron
               </div>
             </div>
           </div>

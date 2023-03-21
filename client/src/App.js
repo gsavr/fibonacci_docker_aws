@@ -4,6 +4,7 @@ import Fib from "./pages/Fib";
 import { Header } from "./components/Header";
 import OtherPage from "./pages/OtherPage";
 import { Footer } from "./components/Footer";
+import ResetPage from "./pages/Reset";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Fib />} />
         <Route path="/how_it_works" element={<OtherPage />} />
+        <Route path="/reset_967" element={<ResetPage />} />
       </Routes>
       <Footer />
     </div>

@@ -8,8 +8,6 @@ export default function Fib() {
   const [index, setIndex] = useState("");
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState("disabled");
-  const [delDisable, setDelDisable] = useState(true);
-  const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState(false);
   // console.log(seenIndexes);
   // console.log(values);
@@ -82,14 +80,6 @@ export default function Fib() {
     return entries;
   };
 
-  const resetIndexes = async () => {
-    setDeleting(true);
-    const response = await axios.post("/api/reset");
-
-    if (response) setDeleting(false);
-    window.location.reload();
-  };
-
   return (
     <div className="fib">
       <form onSubmit={handleSubmit}>
@@ -119,26 +109,6 @@ export default function Fib() {
         style={{ width: "300px" }}
       >
         {renderValues()}
-        <div className="py-2 mt-2">
-          <button
-            className={`btn btn-outline-danger ${delDisable && disabled}`}
-            onClick={resetIndexes}
-          >
-            Reset
-          </button>
-          <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              disabled
-              onChange={() => setDelDisable(!delDisable)}
-            />
-            <label class="form-check-label" for="exampleCheck1">
-              Check to reset Calculated Values
-            </label>
-          </div>
-          {deleting && <Loading util="danger" message="Deleting Data" />}
-        </div>
       </div>
     </div>
   );
