@@ -24,7 +24,7 @@ services:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
-    image: "giorgiosavron/fibapp-nginx4"
+    image: "giorgiosavron/fibapp-nginx"
     mem_limit: 128m
     hostname: nginx
     ports:
