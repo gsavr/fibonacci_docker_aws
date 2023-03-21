@@ -27,7 +27,7 @@ export default function ResetPage() {
   };
 
   return (
-    <div style={{ width: "400px" }} className="mx-auto">
+    <div style={{ width: "400px" }} className="mx-auto fib">
       <h3>Are you sure you would like to RESET?</h3>
       <div className="py-2 mt-2">
         <button
