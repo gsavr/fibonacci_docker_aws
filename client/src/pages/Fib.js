@@ -75,7 +75,7 @@ export default function Fib() {
         <div key={key} className="d-flex flex-row justify-content-between">
           <div>For index {key}</div>
           <div className="">...........................</div>
-          <div>{values[key]}</div>
+          {loading ? <div>...</div> : <div>{values[key]}</div>}
         </div>
       );
     }

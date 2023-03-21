@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Fib />} />
-        <Route path="/otherpage" element={<OtherPage />} />
+        <Route path="/how_it_works" element={<OtherPage />} />
       </Routes>
       <Footer />
     </div>

@@ -10,7 +10,7 @@ export const Header = () => {
         </Link>
         {"  "}
 
-        <Link to="/otherpage" className="link-secondary mx-2">
+        <Link to="/how_it_works" className="link-secondary mx-2">
           How it works
         </Link>
       </header>
