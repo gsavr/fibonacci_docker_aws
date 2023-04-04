@@ -15,6 +15,7 @@ export default function ResetPage() {
 
   const resetIndexes = async () => {
     if (code != parseInt(886785)) {
+      setDelDisable(true);
       setError(true);
     } else {
       setError(false);
